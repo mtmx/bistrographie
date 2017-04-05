@@ -13,7 +13,6 @@ library(data.table)
 dir.create("./geo-sirene")
 serveur <- "./geo-sirene"
 
-
 #lien url où sont stockés les fichiers sirene géocodés  via BAN et BANO par Etalab
 url_source <- "http://212.47.238.202/geo_sirene/last/"
 home_page <- read_html(url_source)
@@ -60,13 +59,12 @@ geosirene <-
 geosirene.db <-
   geosirene %>%
   filter(APET700 %in% '5630Z') %>%
-  mutate(DEPCOM = paste0(DEPET,COMET)) %>%
-  mutate(TYPVOIE = ifelse( TYPVOIE %in% 'CRS' ,"COURS",TYPVOIE)) %>%
-  mutate(TYPVOIE = ifelse( TYPVOIE %in% 'BD' ,"BOULEVARD",TYPVOIE)) %>%
-  mutate(TYPVOIE = ifelse( TYPVOIE %in% 'RTE' ,"ROUTE",TYPVOIE)) %>%
-  mutate(TYPVOIE = ifelse( TYPVOIE %in% c('AVE','AV') ,"AVENUE",TYPVOIE)) %>%
-  mutate(TYPVOIE = ifelse( TYPVOIE %in% 'PL' ,"PLACE",TYPVOIE)) %>%
-  
+  mutate(DEPCOM = paste0(DEPET,COMET),
+        TYPVOIE = ifelse( TYPVOIE %in% 'CRS' ,"COURS",
+                          ifelse( TYPVOIE %in% 'BD' ,"BOULEVARD",
+                                  ifelse( TYPVOIE %in% 'RTE' ,"ROUTE",
+                                          ifelse( TYPVOIE %in% c('AVE','AV') ,"AVENUE",
+                                                  ifelse( TYPVOIE %in% 'PL' ,"PLACE",TYPVOIE)))))) %>%
   mutate(RUE = paste0(TYPVOIE, " ",LIBVOIE)) %>%
   mutate(id_rue = paste0(DEPCOM,"_",RUE)) %>%
   as.data.frame()
