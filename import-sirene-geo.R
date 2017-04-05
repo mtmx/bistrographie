@@ -1,12 +1,6 @@
 
 rm(list = ls(all.names = TRUE))
 
-########################
-####### PARAMETRES #####
-########################
-dir.create("./geo-sirene")
-serveur <- "./geo-sirene"
-
 #packages
 library(xml2)
 library(rvest)
@@ -14,6 +8,11 @@ library(magrittr)
 library(stringr)
 library(dplyr)
 library(data.table)
+
+## dossier de stockage des fichiers par département
+dir.create("./geo-sirene")
+serveur <- "./geo-sirene"
+
 
 #lien url où sont stockés les fichiers sirene géocodés  via BAN et BANO par Etalab
 url_source <- "http://212.47.238.202/geo_sirene/last/"
