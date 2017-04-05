@@ -69,6 +69,7 @@ geosirene.db <-
   mutate(id_rue = paste0(DEPCOM,"_",RUE)) %>%
   as.data.frame()
 
+
 # suppression des fichiers temporaires
 rm(list = c("files", "home_links","home_page", "nom_fichier","url","url_source","geosirene"))
 

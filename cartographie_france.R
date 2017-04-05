@@ -253,7 +253,7 @@ p <- ggplot(subset(palma_bars_ville, APET700 %in% '5630Z'), aes(x=reorder(NCC, r
   labs(
     title = "Palmarès des villes les plus équipées en débits de boissons",
     subtitle = "Nombre de débits de boissons pour 10 000 habitants",
-    caption = "Source : base Sirene Insee Décembre 2016 - communes de plus de 50 000 habitants"
+    caption = "Source : base Sirene Insee Avril 2017 - communes de plus de 50 000 habitants"
   )
 p
 
@@ -306,7 +306,7 @@ gg <- ggplot() +
 labs(
   title = "Densité de débits de boissons pour 10 000 habitants",
   subtitle = "et palmarès des 10 villes les plus équipées en débits de boissons",
-  caption = "Source : base Sirene Insee Décembre 2016 (villes : communes > 50 000 habs)"
+  caption = "Source : base Sirene Insee Avril 2017 (villes : communes > 50 000 habs)"
 )
 
 ggi <- ggiraph(code = {print(gg)}, hover_css = "stroke:red;",zoom_max = 1,tooltip_opacity = .9,

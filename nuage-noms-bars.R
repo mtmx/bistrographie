@@ -36,6 +36,7 @@ wc1 <-
              ellipticity =0.8,
              widgetsize = c(640,300),
              rotateRatio = 0)
+# affichage test
 wc1
 
 # Export de la carte en html
